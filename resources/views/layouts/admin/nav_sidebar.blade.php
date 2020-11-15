@@ -25,7 +25,7 @@
             </li>
         </ul>
     </li>
-
+{{--
     <li>
         <a class="has-arrow" href="#">
             <div class="parent-icon"><i class="zmdi zmdi-reader"></i></div>
@@ -47,7 +47,7 @@
                 </ul>
             </li>
         </ul>
-    </li>
+    </li> --}}
 
     <li class="menu-label">Extra</li>
     <li>

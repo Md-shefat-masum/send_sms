@@ -1,64 +1,66 @@
 @extends('layouts.admin.admin')
 @section('content')
 
-    <div class="card mt-3">
-        <div class="card-content">
-            <div class="row row-group m-0">
-                <div class="col-12 col-lg-6 col-xl-3 border-light">
-                    <div class="card-body">
-                        <h5 class="text-white mb-0">
-                            9526 <span class="float-right"><i class="fa fa-shopping-cart"></i></span>
-                        </h5>
-                        <div class="progress my-3" style="height: 3px;">
-                            <div class="progress-bar" style="width: 55%;"></div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="#" id="sms_form" name="sms_form" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="">Mobile NO:</label>
+                            <input type="text" name="number" value="+880" class="form-control"/>
                         </div>
-                        <p class="mb-0 text-white small-font">
-                            Total Orders <span class="float-right">+4.2% <i class="zmdi zmdi-long-arrow-up"></i></span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 col-xl-3 border-light">
-                    <div class="card-body">
-                        <h5 class="text-white mb-0">
-                            8323 <span class="float-right"><i class="fa fa-usd"></i></span>
-                        </h5>
-                        <div class="progress my-3" style="height: 3px;">
-                            <div class="progress-bar" style="width: 55%;"></div>
+                        <div class="form-group">
+                            <label for="">Type Message:</label>
+                            <textarea name="text" class="form-control" style="height: 300px"></textarea>
                         </div>
-                        <p class="mb-0 text-white small-font">
-                            Total Revenue <span class="float-right">+1.2% <i class="zmdi zmdi-long-arrow-up"></i></span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 col-xl-3 border-light">
-                    <div class="card-body">
-                        <h5 class="text-white mb-0">
-                            6200 <span class="float-right"><i class="fa fa-eye"></i></span>
-                        </h5>
-                        <div class="progress my-3" style="height: 3px;">
-                            <div class="progress-bar" style="width: 55%;"></div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-info send_message">SEND</button>
                         </div>
-                        <p class="mb-0 text-white small-font">
-                            Visitors <span class="float-right">+5.2% <i class="zmdi zmdi-long-arrow-up"></i></span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 col-xl-3 border-light">
-                    <div class="card-body">
-                        <h5 class="text-white mb-0">
-                            5630 <span class="float-right"><i class="fa fa-envira"></i></span>
-                        </h5>
-                        <div class="progress my-3" style="height: 3px;">
-                            <div class="progress-bar" style="width: 55%;"></div>
-                        </div>
-                        <p class="mb-0 text-white small-font">
-                            Messages <span class="float-right">+2.2% <i class="zmdi zmdi-long-arrow-up"></i></span>
-                        </p>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
     <!--End Dashboard Content-->
+
+    @push('js')
+        <script>
+
+            $('.send_message').on('click',function(e){
+                e.preventDefault();
+                let message = sms_form.text.value;
+                let phone = sms_form.number.value;
+                phone = phone.replace('-','');
+                phone = phone.replace(' ','');
+                phone = phone.slice(3, phone.length)
+                phone = parseInt(phone);
+                
+                if(message.length > 0){
+                    let url = `https://sms.youthfireit.com/api/send?key=5de7f7c6325f89dbabbb6d2da0c91db0e6b17e34&phone=${phone}&message=${message}&"device"=1&sim=1&priority=1`;
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        dataType: 'application/json',
+                        success:function(response){
+                            console.log(response);
+                            sms_form.text.value = '';
+                            sms_form.number.value = '+880';
+                        },
+                        error:function(error){
+                            console.log(error);
+                            sms_form.text.value = '';
+                            sms_form.number.value = '+880';
+                        }
+
+                    })
+                }else{
+                    alert('write something.');
+                }
+                console.log(phone,message);
+            });
+
+        </script>
+    @endpush
 @endsection

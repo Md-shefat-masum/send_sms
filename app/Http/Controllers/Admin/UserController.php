@@ -35,6 +35,8 @@ class UserController extends Controller
         return view('admin.user_management.user.edit', compact('user'));
     }
 
+
+
     public function store(Request $request)
     {
         if (
@@ -238,5 +240,9 @@ class UserController extends Controller
         $user->status = 0;
         $user->save();
         return redirect()->back()->with('success', 'user deactivated successfully');
+    }
+
+    public function sms_submit(Request $request){
+        dd($request);
     }
 }

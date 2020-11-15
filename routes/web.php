@@ -42,3 +42,9 @@ Route::group(['prefix' => 'admin/user', 'namespace' => 'Admin', 'middleware' => 
     Route::post('/update', 'UserController@update')->name('admin_user_update');
     Route::get('/delete/{id}', 'UserController@delete')->name('admin_user_delete');
 });
+
+Route::group(['prefix' => 'admin/sms', 'namespace' => 'Admin', 'middleware' => ['auth','admin']], function () {
+    Route::post('/submit', 'UserController@sms_submit')->name('admin_sms_submit');
+});
+
+
