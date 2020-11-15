@@ -83,12 +83,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Admin panel</title>
+    <title>Sms Snder</title>
     <!-- loader-->
     <link href="{{ asset('contents/admin') }}/assets/css/pace.min.css" rel="stylesheet" />
     <script src="{{ asset('contents/admin') }}/assets/js/pace.min.js"></script>
     <!--favicon-->
-    <link rel="icon" href="{{ asset('contents/admin') }}/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="http://hsblco.com/uploads/favicon_1588291670.jpg" type="image/x-icon">
     <!-- Bootstrap core CSS-->
     <link href="{{ asset('contents/admin') }}/assets/css/bootstrap.min.css" rel="stylesheet" />
     <!-- animate CSS-->
@@ -117,7 +117,7 @@
                 <div class="card-body">
                     <div class="card-content p-2">
                         <div class="text-center">
-                            <img src="/icon.png" alt="logo icon">
+                            <img src="http://hsblco.com/uploads/logo_1587960765.png" style="height: 70px;" alt="logo icon">
                         </div>
                         <div class="card-title text-uppercase text-center py-3">Sign In</div>
                         <form method="POST" action="{{ route('login') }}">

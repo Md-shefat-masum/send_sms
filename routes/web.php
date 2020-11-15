@@ -19,17 +19,18 @@ $users = User::where('status',1)->latest()->get();
 View()->share(['users'=>$users]);
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect('/admin');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', 'AdminController@index')->name('admin_index')->middleware(['auth','admin']);
+Route::get('/admin', 'AdminController@index')->name('admin_index')->middleware(['auth']);
 
 // user routes
-Route::group(['prefix' => 'admin/user', 'namespace' => 'Admin', 'middleware' => ['auth','admin']], function () {
+Route::group(['prefix' => 'admin/user', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'UserController@index')->name('admin_user_index');
 
     Route::get('/profile/{id}', 'UserController@profile')->name('admin_user_profile');

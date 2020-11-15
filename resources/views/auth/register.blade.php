@@ -119,7 +119,7 @@
                 <div class="card-body">
                     <div class="card-content p-2">
                         <div class="text-center">
-                            <img src="/icon.png" alt="logo icon">
+                            <img src="http://hsblco.com/uploads/logo_1587960765.png" style="height: 70px;" alt="logo icon">
                         </div>
                         <div class="card-title text-uppercase text-center py-3">Sign Up</div>
                         <form method="POST" action="{{ route('register') }}">

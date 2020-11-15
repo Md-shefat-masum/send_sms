@@ -9,22 +9,24 @@
     </li>
     <li>
         <a href="/admin">
-            <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
-            <div class="menu-title">Dashboard</div>
+            <div class="parent-icon"><i class="fa fa-envelope-o"></i></div>
+            <div class="menu-title">Send Sms</div>
         </a>
     </li>
 
-    <li>
-        <a class="has-arrow" href="#">
-            <div class="parent-icon"><i class="zmdi zmdi-account-box-o"></i></div>
-            <div class="menu-title">User Management</div>
-        </a>
-        <ul class="">
-            <li>
-                <a href="{{ route('admin_user_index') }}"><i class="zmdi zmdi-account-box-o"></i> All Users</a>
-            </li>
-        </ul>
-    </li>
+    @if(Auth::user()->role_id == 1)
+        <li>
+            <a class="has-arrow" href="#">
+                <div class="parent-icon"><i class="zmdi zmdi-account-box-o"></i></div>
+                <div class="menu-title">User Management</div>
+            </a>
+            <ul class="">
+                <li>
+                    <a href="{{ route('admin_user_index') }}"><i class="zmdi zmdi-account-box-o"></i> All Users</a>
+                </li>
+            </ul>
+        </li>
+    @endif
 {{--
     <li>
         <a class="has-arrow" href="#">
@@ -50,12 +52,12 @@
     </li> --}}
 
     <li class="menu-label">Extra</li>
-    <li>
+    {{-- <li>
         <a href="/" target="_blank">
             <div class="parent-icon"><i class="zmdi zmdi-globe"></i></div>
             <div class="menu-title">Visit Site</div>
         </a>
-    </li>
+    </li> --}}
     <li>
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

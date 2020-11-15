@@ -8,12 +8,12 @@
         <meta name="author" content="md.shefat" />
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <title>Admin panel</title>
+        <title>SMS Sender</title>
         <!-- loader-->
         <link href="{{ asset('contents/admin') }}/assets/css/pace.min.css" rel="stylesheet" />
         <script src="{{ asset('contents/admin') }}/assets/js/pace.min.js"></script>
         <!--favicon-->
-        <link rel="icon" href="/icon2.png" type="image/x-icon" />
+        <link rel="icon" href="http://hsblco.com/uploads/favicon_1588291670.jpg" type="image/x-icon" />
         <!-- simplebar CSS-->
         @stack('cssplugin')
         <link href="{{ asset('contents/admin') }}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
@@ -71,8 +71,14 @@
             <!--Start footer-->
             <footer class="footer">
                 <div class="container">
-                    <div class="text-center">
-                        Copyright © 2020 Admin Panel
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="text-left">2020 © All Rights Reserved By SMS Sender</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="text-right">Development Support &amp; maintenance by: <a href="http://hsblco.com/" style="color:rgb(231, 14, 14);">HSBLCO</a></p>
+                        </div>
                     </div>
                 </div>
             </footer>

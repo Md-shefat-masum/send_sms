@@ -1,8 +1,8 @@
 @extends('layouts.admin.admin')
 @section('content')
 
-    <div class="row">
-        <div class="col-6">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
                     <form action="#" id="sms_form" name="sms_form" method="POST">
@@ -36,7 +36,7 @@
                 phone = phone.replace(' ','');
                 phone = phone.slice(3, phone.length)
                 phone = parseInt(phone);
-                
+
                 if(message.length > 0){
                     let url = `https://sms.youthfireit.com/api/send?key=5de7f7c6325f89dbabbb6d2da0c91db0e6b17e34&phone=${phone}&message=${message}&"device"=1&sim=1&priority=1`;
                     $.ajax({
